@@ -118,9 +118,24 @@ function EmptyBarrel() --function that emptys the barrel into the main create mo
 end
 
 
-
+local LASTROW = 12
+local LASTPAGEBUTTONXCORDS = 10
 function leftSideActions(xcords,ycords)
-    -- body
+    if ycords % 2 ~= 0 then
+        local indexOnPage = 1 
+        for i = 3  , 12 ,2 do
+            if ycords == i
+                return indexOnPage
+            else
+                indexOnPage = indexOnPage + 1
+            end
+        end
+    elseif (ycords == LASTROW) and (xcords<=LASTPAGEBUTTONXCORDS) then
+        local NXTbutton = 5
+        local PRVbutton = 10
+        if xcords <= 5 then return "NXT" 
+        elseif xcords<=10 then return "PRV" end
+    end
 end
 
 function RightSideActions(xcords,ycords,IsNumpad)
