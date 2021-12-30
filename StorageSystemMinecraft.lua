@@ -117,6 +117,41 @@ function EmptyBarrel() --function that emptys the barrel into the main create mo
     end
 end
 
+function drawNumPad()
+    monitor.setCursorPos(17,4)
+    resetColors()
+    monitor.write(">>")
+    monitor.setCursorPos(18,5)
+    local tempX,tempY = monitor.getCursorPos()
+    for i = 1 ,9,1 do
+        monitor.write("|")
+        monitor.setTextColor(2048)
+        monitor.write(i)
+        resetColors()
+        if (i % 3 == 0)then
+            monitor.write("|")
+            tempY = tempY + 1
+            monitor.setCursorPos(tempX,tempY)
+
+        end
+    end
+    monitor.write("|")
+    monitor.setTextColor(2048)
+    monitor.write(0)
+    resetColors()
+    monitor.write("|[")
+    monitor.setTextColor(2)
+    monitor.write("<<")
+    resetColors()
+    monitor.write("]")
+    tempY = tempY + 1
+    monitor.setCursorPos(tempX,tempY)
+    monitor.write("|")
+    monitor.setTextColor(32)
+    monitor.write("ENTER")
+    resetColors()
+    monitor.write("|")     
+end
 
 local LASTROW = 12
 local LASTPAGEBUTTONXCORDS = 10
